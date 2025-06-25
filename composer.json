@@ -1,5 +1,5 @@
 {
-    "name": "daniel/cnccconsultas",
+    "name": "daniel/cncconsultas",
     "description": "Sistema de Negativação de Pessoa",
     "autoload": {
         "psr-4": {
