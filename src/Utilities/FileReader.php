@@ -5,7 +5,7 @@ namespace App\Utilities;
 class FileReader{
 
     public function Reader($filename){
-        $default_path = "src/Controllers/View".$filename.".html";
+        $default_path = "src/View".$filename.".html";
         return file_get_contents($default_path);
     }
 

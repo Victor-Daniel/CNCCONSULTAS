@@ -3,7 +3,7 @@ namespace App\Controller\Routes;
 
 class Routes{
 
-    //Define e compara as Rotas para Login
+    //Define e compara as Rotas antes de retornar
     public static function Routes_Available_Login($uri){
         $routes=[
             "/"=>"/login",
@@ -15,7 +15,6 @@ class Routes{
         else{
             return false;
         }
-    
         
     }
 

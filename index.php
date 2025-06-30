@@ -9,8 +9,10 @@ use App\Controller\Response\ResponseLogin;
 
 $processed_route = RequestLogin::Process_RequestLogin($_SERVER["REQUEST_URI"]);
 $array_response_login = ResponseLogin::Process_ResponseLogin($processed_route);
+http_response_code($array_response_login["code"]);
+echo $array_response_login["content"];
 
-var_dump($array_response_login);
+
 
 
 ?>

@@ -5,7 +5,7 @@ class FileChecker{
 
     // VERIFICADOR DE ARQUIVOS HTML
     public function FileVerify($filename){
-        $default_path = "src/Controllers/View".$filename.".html";
+        $default_path = "src/View".$filename.".html";
         if(file_exists($default_path)){
             return true;
         }

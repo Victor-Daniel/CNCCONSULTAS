@@ -6,8 +6,13 @@ class FileRender{
 
     public function Render($Content,$Var){
         $ContentHTML = "";
-        foreach($Var as $key=>$Value){
-            $ContentHTML = str_replace("{{".$key."}}",$Value,$Content);
+        if(is_array($Var)){
+            foreach($Var as $key=>$Value){
+                $ContentHTML = str_replace("{{".$key."}}",$Value,$Content);
+            }
+        }
+        else{
+            $ContentHTML = $Content;
         }
         return $ContentHTML;
     }
