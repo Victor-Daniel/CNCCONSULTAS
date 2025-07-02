@@ -29,7 +29,7 @@ class ControllerLogin{
         else{
             return [
                 "code"=>404,
-                "content"=>""
+                "content"=>"page not found"
             ];
         }
     }

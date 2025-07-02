@@ -18,5 +18,17 @@ class Routes{
         
     }
 
+    public static function Routes_Available_Consulta($uri){
+        $routes=[
+            "/consulta"=>"/consulta"
+        ];
+        if(array_key_exists($uri,$routes)){
+            return $routes[$uri];
+        }
+        else{
+            return false;
+        }
+    }
+
 }
 ?>
