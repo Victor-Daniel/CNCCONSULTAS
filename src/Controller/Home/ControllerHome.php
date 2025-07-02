@@ -1,14 +1,15 @@
 <?php
-namespace App\Controller\Painel;
+
+namespace App\Controller\Home;
 
 use App\Utilities\FileChecker;
 use App\Utilities\FileReader;
 use App\Utilities\FileRender;
 
-class ControllerPainel{
+class ControllerHome{
 
-    //Carrega o conteúdo do Login
-    public function LoadPainel($uri){
+    //Carrega o conteúdo do Home
+    public function LoadHome($uri){
         
         //Verificando a Existencia do HTML
 

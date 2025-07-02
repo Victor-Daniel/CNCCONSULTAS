@@ -1,14 +1,14 @@
 <?php
-namespace App\Controller\Painel;
+namespace App\Controller\RemoverNegativacao;
 
 use App\Utilities\FileChecker;
 use App\Utilities\FileReader;
 use App\Utilities\FileRender;
 
-class ControllerPainel{
+class ControllerRemoverNegativacao{
 
     //Carrega o conteúdo do Login
-    public function LoadPainel($uri){
+    public function LoadRemoverNegativacao($uri){
         
         //Verificando a Existencia do HTML
 

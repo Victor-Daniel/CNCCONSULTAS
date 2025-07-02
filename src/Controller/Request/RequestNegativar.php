@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Controller\Request;
 
 use App\Utilities\RouterProcessor;
 
-class RequestHome{
+class RequestNegativar{
 
     // Inicia o processador de Rota pela URI
-    public static function Process_RequestHome($uri){
+    public static function Process_RequestNegativar($uri){
         $processor_rotes = new RouterProcessor();
-        $processed_route = $processor_rotes->Route_Processor_Home($uri);
+        $processed_route = $processor_rotes->Route_Processor_Negativar($uri);
         return $processed_route;
     }
 }

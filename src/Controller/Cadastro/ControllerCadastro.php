@@ -1,15 +1,14 @@
 <?php
-namespace App\Controller\Painel;
+
+namespace App\Controller\Cadastro;
 
 use App\Utilities\FileChecker;
 use App\Utilities\FileReader;
 use App\Utilities\FileRender;
 
-class ControllerPainel{
-
-    //Carrega o conteúdo do Login
-    public function LoadPainel($uri){
-        
+class ControllerCadastro{
+    public function LoadCadastro($uri){
+         
         //Verificando a Existencia do HTML
 
         $filecheck = new FileChecker();
@@ -29,7 +28,7 @@ class ControllerPainel{
         else{
             return [
                 "code"=>404,
-                "content"=>"page not found"
+                "content"=>"Page not found"
             ];
         }
     }
