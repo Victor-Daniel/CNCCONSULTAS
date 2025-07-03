@@ -18,8 +18,13 @@ class ControllerCadastro{
         if($filecheck->FileVerify($uri)==true){
             $reader = new FileReader();
             $content = $reader->Reader($uri);
+            $config = self::ini_file_app();
             $render = new FileRender();
-            $page = $render->Render($content,"");
+            $page = $render->Render($content,array(
+                "CSSDEKTOP"=>$config["CONEXAOLINK"].$config["CSS_CADASTRO_DESKTOP"],
+                "CSSMOBILE"=>$config["CONEXAOLINK"].$config["CSS_CADASTRO_MOBILE"],
+                "LINKJS"=>$config["CONEXAOLINK"].$config["JSCADASTRO"]
+            ));
             return [
                 "code"=>200,
                 "content"=>$page
@@ -31,6 +36,11 @@ class ControllerCadastro{
                 "content"=>"Page not found"
             ];
         }
+    }
+        //Inicia as configurações presentes no arquivo ini presente no container. caminho é /etc/cncconsultas-config/cncconsultas-config.ini
+    private static function ini_file_app(){
+        $config = parse_ini_file("/etc/cncconsultas-config/cncconsultas-config.ini",true);
+        return $config["app"];
     }
 }
 ?>

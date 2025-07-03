@@ -5,6 +5,8 @@ use App\Utilities\FileChecker;
 use App\Utilities\FileReader;
 use App\Utilities\FileRender;
 
+//define('cncconfig',"/etc/cncconsultas-config/cncconsultas-config.ini");
+
 class ControllerLogin{
 
     //Carrega o conteúdo do Login
@@ -20,7 +22,12 @@ class ControllerLogin{
             $reader = new FileReader();
             $content = $reader->Reader($uri);
             $render = new FileRender();
-            $page = $render->Render($content,"");
+            $config = self::ini_file_app();
+            $page = $render->Render($content,array(
+                "CSSDEKTOP"=>$config["CONEXAOLINK"].$config["CSS_LOGIN_DESKTOP"],
+                "CSSMOBILE"=>$config["CONEXAOLINK"].$config["CSS_LOGIN_MOBILE"],
+                "LINKJS"=>$config["CONEXAOLINK"].$config["JSLOGIN"]
+            ));
             return [
                 "code"=>200,
                 "content"=>$page
@@ -32,6 +39,11 @@ class ControllerLogin{
                 "content"=>"page not found"
             ];
         }
+    }
+    //Inicia as configurações presentes no arquivo ini presente no container. caminho é /etc/cncconsultas-config/cncconsultas-config.ini
+    private static function ini_file_app(){
+        $config = parse_ini_file("/etc/cncconsultas-config/cncconsultas-config.ini",true);
+        return $config["app"];
     }
 }
 

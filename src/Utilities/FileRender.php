@@ -5,15 +5,12 @@ namespace app\Utilities;
 class FileRender{
 
     public function Render($Content,$Var){
-        $ContentHTML = "";
-        if(is_array($Var)){
-            foreach($Var as $key=>$Value){
-                $ContentHTML = str_replace("{{".$key."}}",$Value,$Content);
-            }
+        $ContentHTML = $Content;
+       if(is_array($Var)){
+         foreach($Var as $key=>$Value){
+            $ContentHTML = str_replace("{{".$key."}}",$Value,$ContentHTML);
         }
-        else{
-            $ContentHTML = $Content;
-        }
+       }
         return $ContentHTML;
     }
 }

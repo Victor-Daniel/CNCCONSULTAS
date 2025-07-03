@@ -4,8 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastre-se</title>
+    <link rel="stylesheet" href="{{CSSDEKTOP}}"/>
+    <link rel="stylesheet" href="{{CSSMOBILE}}">
 </head>
 <body>
-    <h1>Cadastre sua empresa</h1>
+     <div class="cadastro-container">
+    <form class="cadastro-form" id="cadastroForm">
+      <h2>Cadastro</h2>
+
+      <!-- Toggle CPF/CNPJ -->
+      <div class="toggle-group">
+        <label>
+          <input type="radio" name="tipoPessoa" value="cpf" checked />
+          Pessoa Física (CPF)
+        </label>
+        <label>
+          <input type="radio" name="tipoPessoa" value="cnpj" />
+          Pessoa Jurídica (CNPJ)
+        </label>
+      </div>
+
+      <!-- Campos comuns -->
+      <div class="input-group">
+        <label for="nome">Nome / Razão Social</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome" required />
+      </div>
+
+      <div class="input-group">
+        <label for="cpfCnpj">CPF</label>
+        <input type="text" id="cpfCnpj" name="cpfCnpj" placeholder="Digite o CPF" required />
+      </div>
+
+      <div class="input-group" id="inscricaoEstadualGroup" style="display: none;">
+        <label for="inscricaoEstadual">Inscrição Estadual</label>
+        <input type="text" id="inscricaoEstadual" name="inscricaoEstadual" placeholder="Digite a Inscrição Estadual" />
+      </div>
+
+      <div class="input-group">
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required />
+      </div>
+
+      <div class="input-group">
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade" required />
+      </div>
+
+      <div class="input-group">
+        <label for="estado">Estado</label>
+        <input type="text" id="estado" name="estado" placeholder="Digite o estado" required />
+      </div>
+
+      <div class="input-group">
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" name="cep" placeholder="Digite o CEP" required />
+      </div>
+
+      <div class="input-group">
+        <label for="telefone">Telefone</label>
+        <input type="text" id="telefone" name="telefone" placeholder="(xx) xxxx-xxxx" />
+      </div>
+
+      <div class="input-group">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Escolha um nome de usuário" required />
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+      </div>
+
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Digite o e-mail" />
+      </div>
+
+      <button type="submit">Cadastrar</button>
+      <p class="message" id="cadastroMessage"></p>
+    </form>
+  </div>
+    <script src="{{LINKJS}}"></script>
 </body>
 </html>
