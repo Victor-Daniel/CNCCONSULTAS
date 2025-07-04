@@ -23,7 +23,8 @@ class ControllerCadastro{
             $page = $render->Render($content,array(
                 "CSSDEKTOP"=>$config["CONEXAOLINK"].$config["CSS_CADASTRO_DESKTOP"],
                 "CSSMOBILE"=>$config["CONEXAOLINK"].$config["CSS_CADASTRO_MOBILE"],
-                "LINKJS"=>$config["CONEXAOLINK"].$config["JSCADASTRO"]
+                "LINKJS"=>$config["CONEXAOLINK"].$config["JSCADASTRO"],
+                "LINKFNCADASTROJS"=>$config["CONEXAOLINK"].$config["JSFNCADASTRO"]
             ));
             return [
                 "code"=>200,

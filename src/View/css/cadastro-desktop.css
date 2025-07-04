@@ -56,14 +56,16 @@ body {
   color: #555;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group select:focus {
   border-color: #007BFF;
   outline: none;
 }

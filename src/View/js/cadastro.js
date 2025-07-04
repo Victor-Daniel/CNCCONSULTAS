@@ -1,3 +1,4 @@
+// Alternar entre CPF e CNPJ
 const tipoPessoaRadios = document.getElementsByName('tipoPessoa');
 const cpfCnpjInput = document.getElementById('cpfCnpj');
 const inscricaoEstadualGroup = document.getElementById('inscricaoEstadualGroup');
@@ -16,7 +17,8 @@ tipoPessoaRadios.forEach(radio => {
   });
 });
 
+// Evento de submit (agora capturando o campo de confirmação de senha)
 document.getElementById('cadastroForm').addEventListener('submit', function(e) {
   e.preventDefault();
-
-});
+})
+                                                         
