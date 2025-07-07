@@ -1,0 +1,18 @@
+/* Botões responsivos */
+@media (max-width: 480px) {
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .action-buttons button {
+    width: 100%;
+  }
+  .dashboard-content {
+    grid-template-columns: 1fr; /* Força apenas 1 coluna */
+  }
+
+  .card {
+    grid-column: span 1; /* Cada card ocupa a única coluna */
+  }
+}

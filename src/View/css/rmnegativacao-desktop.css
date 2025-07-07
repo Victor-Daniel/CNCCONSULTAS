@@ -1,0 +1,142 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+}
+
+/* Barra superior */
+.header {
+  background: #007BFF;
+  color: #fff;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-profile {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.user-profile span {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.user-profile i {
+  transition: transform 0.3s ease;
+}
+
+.user-profile.active i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 55px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 10;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-menu a {
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu a i {
+  margin-right: 8px;
+}
+
+.dropdown-menu a:hover {
+  background: #f0f2f5;
+}
+
+.dropdown-menu a:last-child {
+  color: #d9534f;
+}
+
+.dropdown-menu a:last-child:hover {
+  background: #f2dede;
+}
+
+/* Formulário */
+.remover-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.remover-form {
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.remover-form h2 {
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+.remover-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.remover-form input,
+.remover-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.remover-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.remover-form button {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.remover-form button:hover {
+  background: #0056b3;
+}

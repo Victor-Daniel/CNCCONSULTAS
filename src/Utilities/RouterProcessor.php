@@ -124,7 +124,7 @@ class RouterProcessor{
         $uri_exploded = explode($config['Default_Prefix'],$current_uri);
 
         foreach($uri_exploded as $key=>$value){
-            if($value=="/remover-negativacao"){
+            if($value=="/rm_negativacao"){
                 $uri_exploded = $value;
             }
             else{

@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realizar Consulta</title>
+    <link rel="stylesheet" href="{{CSSDESKTOP}}">
+    <link rel="stylesheet" href="{{CSSMOBILE}}">
 </head>
 <body>
-    <h1> Teste de Consulta</h1>
+     <header class="header">
+    <div class="logo">Consultar Negativação</div>
+    <div class="user-profile" id="userProfile">
+      <span>Olá, Usuário</span>
+      <i class="fas fa-caret-down"></i>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#"><i class="fas fa-user-edit"></i> Alterar Informações</a>
+        <a href="#"><i class="fas fa-cogs"></i> Alterar Plano</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="consulta-container">
+    <section class="consulta-form">
+      <h2>Pesquisar Cliente</h2>
+      <input type="text" id="cpfInput" placeholder="CPF">
+      <input type="text" id="cnpjInput" placeholder="CNPJ">
+      <input type="text" id="nomeInput" placeholder="Nome da Empresa ou Cliente">
+      <button id="btnConsultar"><i class="fas fa-search"></i> Consultar</button>
+    </section>
+
+    <section class="consulta-resultado" id="consultaResultado">
+      <!-- Resultado da consulta aparece aqui -->
+    </section>
+  </main>
+<script src="{{LINKJS}}"></script>
 </body>
 </html>

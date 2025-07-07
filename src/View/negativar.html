@@ -4,8 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nevativação de Cliente</title>
+    <link rel="stylesheet" href="{{CSSDESKTOP}}">
+    <link rel="stylesheet" href="{{CSSMOBILE}}">
 </head>
 <body>
-    
+      <header class="header">
+    <div class="logo">Negativar Cliente</div>
+    <div class="user-profile" id="userProfile">
+      <span>Olá, Usuário</span>
+      <i class="fas fa-caret-down"></i>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#"><i class="fas fa-user-edit"></i> Alterar Informações</a>
+        <a href="#"><i class="fas fa-cogs"></i> Alterar Plano</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="negativar-container">
+    <section class="negativar-form">
+      <h2>Registrar Nova Negativação</h2>
+
+      <label for="cpf-cnpf">CPF/CNPJ do Cliente</label>
+      <input type="text" id="cpf-cnpf" placeholder="000.000.000-00 ou 00.000.000/0000-00" required>
+
+      <label for="nome">Nome do Cliente</label>
+      <input type="text" id="nome" placeholder="Nome completo">
+
+      <label for="estabelecimento">Nome do Estabelecimento</label>
+      <input type="text" id="estabelecimento" placeholder="Nome do estabelecimento">
+
+      <label for="divida">Valor da Dívida(R$)</label>
+      <input type="text" id="divida" placeholder="Ex:0.000" required>
+
+      <label for="endereco">Endereço (Rua)</label>
+      <input type="text" id="endereco" placeholder="Rua, avenida, etc" required>
+
+      <label for="numero">Número</label>
+      <input type="text" id="numero" placeholder="Número da residência" required>
+
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" placeholder="Bairro" required>
+
+      <label for="cep">CEP</label>
+      <input type="text" id="cep" placeholder="00000-000" required>
+
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" placeholder="Cidade" required>
+
+      <label for="estado">Estado</label>
+      <select id="estado">
+        <option value="">Selecione o estado</option>
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AP">AP</option>
+        <option value="AM">AM</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MT">MT</option>
+        <option value="MS">MS</option>
+        <option value="MG">MG</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PR">PR</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RS">RS</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="SC">SC</option>
+        <option value="SP">SP</option>
+        <option value="SE">SE</option>
+        <option value="TO">TO</option>
+      </select>
+
+      <label for="observacoes">Observações</label>
+      <textarea id="observacoes" placeholder="Detalhes adicionais"></textarea>
+
+      <label for="data">Data da Negativação</label>
+      <input type="date" id="data">
+
+      <button id="btnNegativar">Registrar Negativação</button>
+    </section>
+  </main>
+  <script src="{{LINKJS}}"></script>
 </body>
 </html>

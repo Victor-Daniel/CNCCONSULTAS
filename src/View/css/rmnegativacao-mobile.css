@@ -1,0 +1,13 @@
+/* Responsivo */
+@media (max-width: 480px) {
+  .remover-container {
+    padding: 0 10px;
+  }
+
+  .remover-form {
+    padding: 20px 15px;
+  }
+  .remover-form input[type="date"]{
+    width: 100%;
+  }
+}

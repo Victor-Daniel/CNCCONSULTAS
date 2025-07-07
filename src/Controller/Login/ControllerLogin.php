@@ -24,7 +24,7 @@ class ControllerLogin{
             $render = new FileRender();
             $config = self::ini_file_app();
             $page = $render->Render($content,array(
-                "CSSDEKTOP"=>$config["CONEXAOLINK"].$config["CSS_LOGIN_DESKTOP"],
+                "CSSDESKTOP"=>$config["CONEXAOLINK"].$config["CSS_LOGIN_DESKTOP"],
                 "CSSMOBILE"=>$config["CONEXAOLINK"].$config["CSS_LOGIN_MOBILE"],
                 "LINKJS"=>$config["CONEXAOLINK"].$config["JSLOGIN"]
             ));

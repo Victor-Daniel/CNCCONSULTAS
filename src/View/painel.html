@@ -4,8 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{{CSSDESKTOP}}">
+    <link rel="stylesheet" href="{{CSSMOBILE}}">
 </head>
 <body>
-    
+     <!-- Barra superior -->
+  <header class="header">
+    <div class="logo">Meu Dashboard</div>
+    <div class="user-profile" id="userProfile">
+      <span id="userName">my account</span>
+      <i class="fas fa-caret-down"></i>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#"><i class="fas fa-user-edit"></i> Alterar Informações</a>
+        <a href="#"><i class="fas fa-cogs"></i> Alterar Plano</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="dashboard-content">
+    <!-- Botões de ação -->
+    <div class="action-buttons">
+      <button id="btnRealizarConsultas"><i class="fas fa-search"></i> Realizar Consultas</button>  
+      <button id="btnIniciarNegativacao"><i class="fas fa-play"></i> Iniciar Negativação</button>
+      <button id="btnRemoverNegativacao"><i class="fas fa-trash-alt"></i> Remover Negativação</button>
+    </div>
+
+    <!-- Cards -->
+    <div class="card">
+      <h3>Plano de Licença</h3>
+      <p>Plano Atual: <strong>Premium</strong></p>
+      <p>Validade: <strong>12 meses</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Clientes Negativados</h3>
+      <p>Total: <strong>23</strong></p>
+      <p>Última atualização: <strong>02/07/2025</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Consultas</h3>
+      <p>Total de Consultas: <strong>500</strong></p>
+      <p>Consultas Realizadas: <strong>380</strong></p>
+      <p>Consultas Restantes: <strong>120</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Perfil do Usuário</h3>
+      <p>Nome: <strong>João Silva</strong></p>
+      <p>Email: <strong>joao@email.com</strong></p>
+      <p>Tipo de Conta: <strong>Administrador</strong></p>
+    </div>
+
+    <!-- NOVO: Negativações Removidas -->
+  <div class="card">
+    <h3>Negativações Removidas</h3>
+    <p>Total Removidas: <strong>5</strong></p>
+    <p>Mês Atual: <strong>2</strong></p>
+  </div>
+
+  <!-- NOVO: Alertas de Fraude -->
+  <div class="card">
+    <h3>Alertas de Fraude</h3>
+    <p>Ocorrências: <strong>1</strong></p>
+    <p>Última Ocorrência: <strong>Ontem</strong></p>
+  </div>
+  </main>
+
+  <script src="{{LINKJS}}"></script>
 </body>
 </html>

@@ -82,7 +82,7 @@ class Routes{
 
     public static function Routes_Available_RemoverNegativacao($uri){
         $routes=[
-            "/remover-negativacao"=>"/remover-negativacao"
+            "/rm_negativacao"=>"/remover-negativacao"
         ];
         if(array_key_exists($uri,$routes)){
             return $routes[$uri];

@@ -1,0 +1,10 @@
+/* Responsivo */
+@media (max-width: 480px) {
+  .consulta-container {
+    padding: 0 10px;
+  }
+
+  .consulta-form {
+    padding: 20px 15px;
+  }
+}
