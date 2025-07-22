@@ -3,12 +3,8 @@
   .negativar-container {
     padding: 0 10px;
   }
-
   .negativar-form {
     padding: 20px 15px;
-  }
-  #dataHora{
-
   }
   .negativar-form input[type="date"] {
     width: 100%;  /* Garante que o campo pegue toda a largura */

@@ -2,6 +2,7 @@
 const tipoPessoaRadios = document.getElementsByName('tipoPessoa');
 const cpfCnpjInput = document.getElementById('cpfCnpj');
 const inscricaoEstadualGroup = document.getElementById('inscricaoEstadualGroup');
+const fone = document.getElementById("contato");
 
 tipoPessoaRadios.forEach(radio => {
   radio.addEventListener('change', () => {
@@ -17,8 +18,19 @@ tipoPessoaRadios.forEach(radio => {
   });
 });
 
-// Evento de submit (agora capturando o campo de confirmação de senha)
-document.getElementById('cadastroForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-})
+cpfCnpjInput.addEventListener("keydown",function(e){
+   let regex = /[0-9]/;
+   if(!regex.test(e.key)&&(e.key != "Backspace")&&(e.key != "ArrowLeft")&&(e.key != "ArrowRight")&&(e.key != "Tab")){
+      e.preventDefault();
+   }
+
+});
+
+fone.addEventListener("keydown",function(e){
+    let regex = /[0-9]/;
+    if(!regex.test(e.key)&&(e.key != "Backspace")&&(e.key != "ArrowLeft")&&(e.key != "ArrowRight")&&(e.key != "Tab")){
+      e.preventDefault();
+    }
+});
+
                                                          
