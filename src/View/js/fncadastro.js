@@ -115,6 +115,9 @@ btn_cadastro.addEventListener("click",function(){
             alert("As senhas não são iguais! Digite novamente.");
             passwd.value="";
             conf_pass.value="";
+            confirm_senha=false;
+          }
+          else{
             confirm_senha=true;
           }
       }
@@ -126,7 +129,20 @@ btn_cadastro.addEventListener("click",function(){
       }
 
       if(val_nome===true&&val_arraycpf===true&&val_endereco===true&&val_number_resid===true&&val_bairro===true&&val_cep===true&&val_cidade===true&&val_estado===true&&val_contato===true&&usuario===true&&confirm_senha===true&&Val_email===true){
-        alert("Dados OK");
+        var Dados={
+          usuario: user.value,
+          passwd: conf_pass.value,
+          email: email.value,
+          contato: contato.value,
+          nome: nome.value,
+          cpf:cpfCnpjInp.value,
+          endereco: endereco.value,
+          numero: numero.value,
+          bairro: bairro.value,
+          cep: cep.value,
+          cidade: cidade.value,
+          estado: uf.value
+        };
       }
       else{
          alert("Dados incorretos");
@@ -138,6 +154,10 @@ btn_cadastro.addEventListener("click",function(){
   //Processo de cadastro do CNPJ.
   else{
     let campos = Verificar_Campos_CNPJ();
+    if(campos===true){
+      
+    }
+
   }
 });
 
@@ -278,6 +298,9 @@ function Validar_Nome(Nome){
     nome.value = "";
     return false;
   }
+  else{
+    return true;
+  }
 
 }
 
@@ -331,7 +354,52 @@ function Validar_CPF(arraycpf){
 }
 
 function Validar_CNPJ(arrayCnpj){
-  
+   let i, soma, dv1, dv2, resto;
+
+    //Calculando Digito Validador 1
+    let pesos1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    soma = 0;
+
+    for (i = 0; i < 12; i++) {
+        soma += arraycnpj[i] * pesos1[i];
+    }
+
+    resto = soma % 11;
+
+    if(resto < 2){
+        dv1 = 0;
+    }
+    else{
+        dv1 = 11 - resto;
+    }
+
+    //Digito validador 2
+
+    let pesos2 = [6].concat(pesos1); // mesma lista, mas começa com 6
+    soma = 0;
+    for (i = 0; i < 13; i++) {
+        soma += arraycnpj[i] * pesos2[i];
+    }
+
+    resto = soma % 11;
+
+    if(resto < 2){
+        dv2 = 0;
+    }
+    else{
+        dv2 = 11 - resto;
+    }
+    
+
+    //Comparação
+
+    if((dv1 == arraycnpj[12])&&(dv2==arraycnpj[13])){
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }
 
 function Validar_Endereco(Endereco){
@@ -458,7 +526,7 @@ function Validar_Contato(Contato){
 }
 
 function Validar_User(User){
-  const charRegex = /^[a-zA-ZÀ-ÿçÇ^~´\s]$/;
+  const charRegex = /^[a-zA-Z0-9À-ÿ\s]$/;
   let number_finds = 0;
   for (let i = 0; i < User.length; i++) {
     const char = User[i];
