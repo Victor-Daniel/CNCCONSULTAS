@@ -357,5 +357,446 @@ export class Validador_IE{
 
         return resultado;
     }
+    val_IEMT(ie){
+         ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 11) {
+            const pesos = [3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 10; i++) {
+            soma += parseInt(ie[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digito = (resto < 2 || resto === 10) ? 0 : 11 - resto;
+
+            if (parseInt(ie[10]) === digito) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IEMS(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9 && ie.startsWith('28')) {
+            const pesos = [9, 8, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(ie[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digito = (resto === 0 || resto === 1) ? 0 : 11 - resto;
+
+            if (parseInt(ie[8]) === digito) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IRMG(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 13) {
+            const base = ie.substring(0, 11);
+            const digito1 = parseInt(ie[11]);
+            const digito2 = parseInt(ie[12]);
+
+            // === Cálculo do primeiro dígito (12º dígito) ===
+            let body = ie.substring(0, 3) + '0' + ie.substring(3, 11);
+            let soma = 0;
+
+            for (let i = 0; i < body.length; i++) {
+            const multiplicador = (i % 2 === 0) ? 1 : 2;
+            const produto = parseInt(body[i]) * multiplicador;
+            soma += produto > 9 ? Math.floor(produto / 10) + (produto % 10) : produto;
+            }
+
+            const resto1 = soma % 10;
+            const calculadoDigito1 = (resto1 === 0) ? 0 : 10 - resto1;
+
+            // === Cálculo do segundo dígito (13º dígito) ===
+            const pesos2 = [3, 2, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+            let soma2 = 0;
+            const novaBase = base + calculadoDigito1;
+
+            for (let i = 0; i < 12; i++) {
+            soma2 += parseInt(novaBase[i]) * pesos2[i];
+            }
+
+            const resto2 = soma2 % 11;
+            const calculadoDigito2 = (resto2 < 2) ? 0 : 11 - resto2;
+
+            if (digito1 === calculadoDigito1 && digito2 === calculadoDigito2) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IEPA(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9 && ie.startsWith('15')) {
+            const pesos = [9, 8, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(ie[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digito = (resto <= 1) ? 0 : 11 - resto;
+
+            if (parseInt(ie[8]) === digito) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IEPB(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9) {
+            const pesos = [9, 8, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(ie[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digito = (resto === 0 || resto === 1) ? 0 : 11 - resto;
+
+            if (parseInt(ie[8]) === digito) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IEPR(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 10) {
+            const corpo = ie.substring(0, 8);
+            const digito1 = parseInt(ie[8]);
+            const digito2 = parseInt(ie[9]);
+
+            // Cálculo do primeiro dígito
+            const pesos1 = [3, 2, 7, 6, 5, 4, 3, 2];
+            let soma1 = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma1 += parseInt(ie[i]) * pesos1[i];
+            }
+
+            let resto1 = soma1 % 11;
+            let calcDig1 = (resto1 <= 1) ? 0 : 11 - resto1;
+
+            // Cálculo do segundo dígito (usa o corpo + primeiro dígito)
+            const pesos2 = [4, 3, 2, 7, 6, 5, 4, 3, 2];
+            let soma2 = 0;
+            const corpo2 = corpo + calcDig1;
+
+            for (let i = 0; i < 9; i++) {
+            soma2 += parseInt(corpo2[i]) * pesos2[i];
+            }
+
+            let resto2 = soma2 % 11;
+            let calcDig2 = (resto2 <= 1) ? 0 : 11 - resto2;
+
+            if (digito1 === calcDig1 && digito2 === calcDig2) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IEPE(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9) {
+            const base = ie.substring(0, 7); // primeiros 7 dígitos
+            const dv1 = parseInt(ie[7]);
+            const dv2 = parseInt(ie[8]);
+
+            // Cálculo do primeiro dígito
+            const pesos1 = [8, 7, 6, 5, 4, 3, 2];
+            let soma1 = 0;
+
+            for (let i = 0; i < 7; i++) {
+            soma1 += parseInt(base[i]) * pesos1[i];
+            }
+
+            let resto1 = soma1 % 11;
+            let calcDV1 = (resto1 <= 1) ? 0 : 11 - resto1;
+
+            // Cálculo do segundo dígito
+            const novoBase = base + calcDV1;
+            const pesos2 = [9, 8, 7, 6, 5, 4, 3, 2];
+            let soma2 = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma2 += parseInt(novoBase[i]) * pesos2[i];
+            }
+
+            let resto2 = soma2 % 11;
+            let calcDV2 = (resto2 <= 1) ? 0 : 11 - resto2;
+
+            if (dv1 === calcDV1 && dv2 === calcDV2) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IEPI(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9) {
+            const base = ie.substring(0, 8); // primeiros 8 dígitos
+            const digitoInformado = parseInt(ie[8]);
+
+            const pesos = [9, 8, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digitoCalculado = (resto === 0 || resto === 1) ? 0 : 11 - resto;
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IERJ(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 8) {
+            const base = ie.substring(0, 7); // primeiros 7 dígitos
+            const digitoInformado = parseInt(ie[7]);
+
+            const pesos = [2, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 7; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digitoCalculado = 11 - resto;
+
+            if (digitoCalculado >= 10) {
+            digitoCalculado = 0;
+            }
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IERN(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9 || ie.length === 10) {
+            const base = ie.slice(0, ie.length - 1);
+            const digitoInformado = parseInt(ie.slice(-1));
+
+            const pesos = [];
+            let pesoInicial = ie.length;
+            for (let i = 0; i < base.length; i++) {
+            pesos.push(pesoInicial - i);
+            }
+
+            let soma = 0;
+            for (let i = 0; i < base.length; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+            }
+
+            let resto = (soma * 10) % 11;
+            let digitoCalculado = (resto === 10) ? 0 : resto;
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IERS(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 10) {
+            const base = ie.slice(0, 9); // primeiros 9 dígitos
+            const digitoInformado = parseInt(ie[9]);
+
+            const pesos = [2, 3, 4, 5, 6, 7, 8, 9];
+            let soma = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(base[8 - i]) * pesos[i];
+            }
+
+            soma += parseInt(base[0]) * 2;
+
+            let resto = soma % 11;
+            let digitoCalculado = 11 - resto;
+
+            if (digitoCalculado === 10 || digitoCalculado === 11) {
+            digitoCalculado = 0;
+            }
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IERO(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 14) {
+            const base = ie.substring(0, 13);
+            const digitoInformado = parseInt(ie[13]);
+
+            const pesos = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            let soma = 0;
+
+            for (let i = 0; i < 13; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digitoCalculado = 11 - resto;
+
+            if (digitoCalculado === 10 || digitoCalculado === 11) {
+            digitoCalculado = 0;
+            }
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IERR(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9 && ie.startsWith('24')) {
+            const base = ie.slice(0, 8);
+            const digitoInformado = parseInt(ie[8]);
+
+            let soma = 0;
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(base[i]) * (i + 1);
+            }
+
+            let digitoCalculado = soma % 9;
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IESC(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 9) {
+            const base = ie.slice(0, 8);
+            const digitoInformado = parseInt(ie[8]);
+
+            const pesos = [8, 7, 6, 5, 4, 3, 2, 1];
+            let soma = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+            }
+
+            let resto = soma % 11;
+            let digitoCalculado = 11 - resto;
+
+            if (digitoCalculado === 10 || digitoCalculado === 11) {
+            digitoCalculado = 0;
+            }
+
+            if (digitoInformado === digitoCalculado) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+    val_IESP(ie){
+        ie = ie.replace(/\D/g, '');
+        let resultado = false;
+
+        if (ie.length === 12) {
+            // Validação do primeiro dígito verificador (posição 9)
+            const base1 = ie.substring(0, 8);
+            const digito1 = parseInt(ie[8]);
+
+            const pesos1 = [1, 3, 4, 5, 6, 7, 8, 10];
+            let soma1 = 0;
+
+            for (let i = 0; i < 8; i++) {
+            soma1 += parseInt(base1[i]) * pesos1[i];
+            }
+
+            let resto1 = soma1 % 11;
+            let calcDig1 = (resto1 === 10) ? 0 : resto1;
+
+            // Validação do segundo dígito verificador (posição 12)
+            const base2 = ie.substring(0, 11);
+            const digito2 = parseInt(ie[11]);
+
+            const pesos2 = [3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+            let soma2 = 0;
+
+            for (let i = 0; i < 11; i++) {
+            soma2 += parseInt(base2[i]) * pesos2[i];
+            }
+
+            let resto2 = soma2 % 11;
+            let calcDig2 = (resto2 === 10) ? 0 : resto2;
+
+            if (digito1 === calcDig1 && digito2 === calcDig2) {
+            resultado = true;
+            }
+        }
+
+        return resultado;
+    }
 
 }
