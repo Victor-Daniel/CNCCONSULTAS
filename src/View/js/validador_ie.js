@@ -20,23 +20,23 @@ export class Validador_IE{
 
             if (parseInt(ie[11]) === digito1) {
             // Segundo dígito
-            const pesos2 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-            let soma2 = 0;
+                const pesos2 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+                let soma2 = 0;
 
-            for (let i = 0; i < 12; i++) {
-                soma2 += parseInt(ie[i]) * pesos2[i];
-            }
+                for (let i = 0; i < 12; i++) {
+                    soma2 += parseInt(ie[i]) * pesos2[i];
+                }
 
-            let digito2 = 11 - (soma2 % 11);
-            if (digito2 >= 10) {
-                digito2 = 0;
-            }
+                let digito2 = 11 - (soma2 % 11);
+                if (digito2 >= 10) {
+                    digito2 = 0;
+                }
 
-            if (parseInt(ie[12]) === digito2) {
-                resultado = true;
-            } else {
-                resultado = false;
-            }
+                if (parseInt(ie[12]) === digito2) {
+                    resultado = true;
+                } else {
+                    resultado = false;
+                }
             } else {
             resultado = false;
             }

@@ -1,3 +1,5 @@
+import {Validador_IE} from "./validador_ie";
+
 // Selecionando os Radio Buttons
 const rd_cpf = document.getElementById("rd_cpf");
 const rd_cnpj = document.getElementById("rd_cnpj");
@@ -155,7 +157,97 @@ btn_cadastro.addEventListener("click",function(){
   else{
     let campos = Verificar_Campos_CNPJ();
     if(campos===true){
+        if(val_nome===false){
+         alert("Digite novamente o Nome ou Razão Social. Foram encontrados dados inválidos!");
+        }
+        var val_arraycnpj = Validar_CPF(cpfCnpjInp.value.split("").map(Number));
+        if(val_arraycnpj===false){
+          alert("O CNPJ informado é Inválido. Digite novamente!");
+          cpfCnpjInp.value="";
+        }
+
+        val_InsEstadual = Validar_InscricaoEstadual();
+        if(val_InsEstadual===false){
+          alert("A Incrição Estadual informada é Inválida. Digite novamente!");
+          insc_est.value ="";
+        }
+        var val_endereco = Validar_Endereco(endereco.value.trim());
+      if(val_endereco===false){
+        alert("Digite novamente o Endereço. Foram encontrados dados inválidos!");
+        endereco.value = "";
+      }
+      var val_number_resid = Validar_Numero_Resid(numero.value.trim());
+      if(val_number_resid===false){
+        alert("Número da Residência inválido");
+        numero.value = "";
+      }
+      var val_bairro = Validar_Bairro(bairro.value.trim());
+      if(val_bairro===false){
+        alert("O Bairro digitado é inválido!");
+        bairro.value = "";
+      }
+      var val_cep = Validar_Cep(cep.value.trim());
+      if(val_cep===false){
+        alert("Digite novamente o CEP. Foram encontrados dados inválidos!");
+        cep.value = "";
+      }
+      var val_cidade = Validar_Cidade(cidade.value.trim());
+      if(val_cidade===false){
+        alert("Digite novamente o nome da Cidade. Foram encontrados dados inválidos!");
+        cidade.value="";
+      }
+      var val_estado = Validar_Estado(uf.value.trim());
+      if(val_estado===false){
+        alert("Selecione o Estado novamente. Foram encontrados dados inválidos!");
+        uf.value="";
+      }
+
+      var val_contato=false;
+      if(contato.value.length>11){
+        alert("Digite novamente o número de Contato. Celular inválido!");
+        contato.value="";
+      }
+      else{
+        val_contato = Validar_Contato(contato.value.trim());
+        if(val_contato===false){
+           alert("Digite novamente o número de Contato. Celular inválido!");
+           contato.value="";
+        } 
+      }
+
+      var usuario = Validar_User(user.value.trim());
+      if(usuario==false){
+        alert("Digite novamente o nome de Usuário. Foram encontrados dados inválidos!");
+        user.value = "";
+      }
+
+      var senha1 = Validar_Senha(passwd.value.trim());
+      var senha2 = Validar_Senha(conf_pass.value.trim());
+      var confirm_senha = false;
+      if(senha1===false || senha2===false){
+        alert("Digite novamente sua Senha. A senha digitada anteriormente contém o um tamanho menor que 8 caracteres ou não é uma senha válida!");
+        passwd.value="";
+        conf_pass.value="";
+      }
+      else if(senha1===true && senha2===true){
+          var confirmacao_senha = Comparador_Senhas(passwd.value.trim(),conf_pass.value.trim());
+          if(confirmacao_senha===false){
+            alert("As senhas não são iguais! Digite novamente.");
+            passwd.value="";
+            conf_pass.value="";
+            confirm_senha=false;
+          }
+          else{
+            confirm_senha=true;
+          }
+      }
       
+      var Val_email = Validar_Email(email.value.trim());
+      if(Val_email===false){
+        alert("Email inválido! Digite novamente seu email.");
+        email.value="";
+      }
+
     }
 
   }
@@ -595,4 +687,91 @@ function Validar_Email(email){
   else{
     return false;
   }
+}
+
+function Validar_InscricaoEstadual(UF,CNPJ){
+  let val = new Validador_IE();
+  if(UF=="AC"){
+    return val.val_IEAC(insc_est.value);
+  }
+  if(UF=="AL"){
+    return val.val_IEAL(insc_est.value);
+  }
+    if(UF=="AP"){
+    return val.val_IEAP(insc_est.value);
+  }
+    if(UF=="AM"){
+    return val.val_IEAM(insc_est.value);
+  }
+    if(UF=="BA"){
+    return val.val_IEBA(insc_est.value);
+  }
+    if(UF=="CE"){
+    return val.val_IECE(insc_est.value);
+  }
+    if(UF=="DF"){
+    return val.val_IEDF(insc_est.value);
+  }
+    if(UF=="ES"){
+    return val.val_IEES(insc_est.value);
+  }
+    if(UF=="GO"){
+    return val.val_IEGO(insc_est.value);
+  }
+    if(UF=="MA"){
+    return val.val_IEMA(insc_est.value);
+  }
+    if(UF=="MT"){
+    return val.val_IEMT(insc_est.value);
+  }
+    if(UF=="MS"){
+    return val.val_IEMS(insc_est.value);
+  }
+    if(UF=="MG"){
+    return val.val_IEMG(insc_est.value);
+  }
+    if(UF=="PA"){
+    return val.val_IEPA(insc_est.value);
+  }
+    if(UF=="PB"){
+    return val.val_IEPB(insc_est.value);
+  }
+    if(UF=="PR"){
+    return val.val_IEPR(insc_est.value);
+  }
+    if(UF=="PE"){
+    return val.val_IEPE(insc_est.value);
+  }
+    if(UF=="PI"){
+    return val.val_IEPI(insc_est.value);
+  }
+    if(UF=="RJ"){
+    return val.val_IERJ(insc_est.value);
+  }
+    if(UF=="RN"){
+    return val.val_IERN(insc_est.value);
+  }
+    if(UF=="RS"){
+    return val.val_IERS(insc_est.value);
+  }
+    if(UF=="RO"){
+    return val.val_IERO(insc_est.value);
+  }
+    if(UF=="RR"){
+    return val.val_IERR(insc_est.value);
+  }
+    if(UF=="SC"){
+    return val.val_IESC(insc_est.value);
+  }
+    if(UF=="SP"){
+    return val.val_IESP(insc_est.value);
+  }
+    if(UF=="SE"){
+    return val.val_IESE(insc_est.value);
+  }
+    if(UF=="TO"){
+    return val.val_IETO(insc_est.value);
+  }
+
+
 }
