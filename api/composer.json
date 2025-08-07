@@ -1,0 +1,14 @@
+{
+    "name": "daniel/api",
+    "autoload": {
+        "psr-4": {
+            "Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Victor Daniel"
+        }
+    ],
+    "require": {}
+}
