@@ -1,4 +1,6 @@
 <?php
+require __DIR__."/vendor/autoload.php";
+
 header('Content-Type: application/json');
 $json = file_get_contents('php://input');
 

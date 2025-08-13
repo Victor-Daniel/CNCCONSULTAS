@@ -804,7 +804,7 @@ function Validar_InscricaoEstadual(UF){
 //Função de Enviar Dados
 
 function sendData(json){
-  fetch("http://localhost/api/user/user",{
+  fetch("http://localhost/api/createuser",{
     method:"POST",
      headers: {
     'Content-Type': 'application/json'
