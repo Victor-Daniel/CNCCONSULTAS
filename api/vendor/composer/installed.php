@@ -3,7 +3,7 @@
         'name' => 'daniel/api',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '371c7b84f5d2143b7f46d69d7e8eb641c7628417',
+        'reference' => '90d8423681d8893c5453711c4ff021c9b3328829',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'daniel/api' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '371c7b84f5d2143b7f46d69d7e8eb641c7628417',
+            'reference' => '90d8423681d8893c5453711c4ff021c9b3328829',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
