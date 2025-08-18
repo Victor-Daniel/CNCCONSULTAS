@@ -4,7 +4,7 @@ require __DIR__."/vendor/autoload.php";
 use Api\Routes\Routes;
 use Api\Utilities\RouterProcessor;
 use Api\Utilities\FileChecker;
-use Api\Controllers\User\User;
+use Api\Utilities\DataSanitizer;
 
 header('Content-Type: application/json');
 header("Allow: POST");
@@ -14,19 +14,22 @@ try{
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    $Routes = new Routes();
+   $Routes = new Routes();
     $processor = new RouterProcessor();
 
     $route = $Routes -> available_routes_register($processor->Route_Processor_Register($_SERVER['REQUEST_URI']),$_SERVER['REQUEST_METHOD']);
     $file = new FileChecker();
 
     // Verificando a existência da rota /User
-    if($route=="/User"){
+   if($route=="/User"){
         //Verficando se existe um controlador
         $path = $route;
         if($file->FileVerify($path,$route)==true){
 
-            //Continuar aqui
+            //$sanitizer = new DataSanitizer();
+
+           // $datas_sanitized = $sanitizer->Data_Register_Sanitizer($data);
+            echo json_encode([]);
         }
         else{
             http_response_code(404);
@@ -36,7 +39,8 @@ try{
     else{
         http_response_code(405);
         echo json_encode(["erro"=>$route,"msg"=>"Method not accepted"]);
-    }
+    } 
+
 
 }
 catch(\Throwable $e){
