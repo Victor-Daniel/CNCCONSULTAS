@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    build: .
+    container_name: cncconsultas_mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: HwWin10A.1
+      MYSQL_DATABASE: cncconsultas
+      MYSQL_USER: cncuser
+      MYSQL_PASSWORD: cncpass
+    volumes:
+      - /home/daniel/Projetos/CNCCONSULTAS/mysql_data:/var/lib/mysql
+    networks:
+      - CNCCONSULTAS
+
+networks:
+  CNCCONSULTAS:
+    external: true

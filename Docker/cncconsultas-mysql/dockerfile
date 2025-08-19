@@ -1,0 +1,11 @@
+# Usa a imagem oficial do MySQL 8.4
+FROM mysql:8.4
+
+# Variáveis padrão (podem ser sobrescritas no compose)
+ENV MYSQL_ROOT_PASSWORD=HwWin10A.1
+ENV MYSQL_DATABASE=cncconsultas
+ENV MYSQL_USER=cncuser
+ENV MYSQL_PASSWORD=cncpass
+
+# Expõe a porta padrão do MySQL
+EXPOSE 3306

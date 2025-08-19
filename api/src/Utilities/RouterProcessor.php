@@ -11,7 +11,7 @@ class RouterProcessor{
         return $config["api"];
     }
 
-    public function Route_Processor_Register($uri){
+    public function Route_Processor_Register(string $uri):string {
         $config = $this->ini_file_app();
         $current_uri = str_replace($config['Default_Prefix'],"",$uri);
         return $current_uri;

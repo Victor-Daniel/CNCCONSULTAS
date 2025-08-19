@@ -26,10 +26,10 @@ try{
         $path = $route;
         if($file->FileVerify($path,$route)==true){
 
-            //$sanitizer = new DataSanitizer();
-
-           // $datas_sanitized = $sanitizer->Data_Register_Sanitizer($data);
-            echo json_encode([]);
+            $sanitizer = new DataSanitizer();
+            
+            $datas_sanitized = $sanitizer->Data_Register_Sanitizer($data);
+            echo json_encode($datas_sanitized);
         }
         else{
             http_response_code(404);

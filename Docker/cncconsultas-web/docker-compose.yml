@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: cncconsultas_web
+    ports:
+      - "80:80"
+    networks:
+      - CNCCONSULTAS
+    volumes:
+      # Sincroniza todo o projeto em tempo real
+      - type: bind
+        source: /home/daniel/Projetos/CNCCONSULTAS
+        target: /var/www/html
+        consistency: delegated
+
+      # Pasta Docker como somente leitura
+      - type: bind
+        source: /home/daniel/Projetos/CNCCONSULTAS/Docker
+        target: /var/www/html/Docker
+        read_only: true
+
+      # Sincroniza diretório de configuração em tempo real
+      - type: bind
+        source: /home/daniel/Projetos/CNCCONSULTAS/config/cncconsultas-config
+        target: /etc/cncconsultas-config
+        consistency: delegated
+
+networks:
+  CNCCONSULTAS:
+    external: true

@@ -1,0 +1,34 @@
+# Imagem base Ubuntu latest
+FROM ubuntu:latest
+
+# Evita prompts interativos no apt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Atualiza sistema e instala dependências básicas, Apache e PHP 8.3
+RUN apt-get update && \
+    apt-get install -y software-properties-common lsb-release apt-transport-https ca-certificates curl git unzip wget apache2 libapache2-mod-php && \
+    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Adiciona repositório oficial para PHP 8.3
+RUN add-apt-repository ppa:ondrej/php -y && apt-get update
+
+# Instala PHP 8.3 e extensões comuns
+RUN apt-get install -y \
+    php8.3 php8.3-cli php8.3-common php8.3-curl php8.3-zip php8.3-mbstring php8.3-mysql php8.3-pdo php8.3-gd php8.3-intl php8.3-bcmath php8.3-soap php8.3-xml php8.3-opcache && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Habilita mod_rewrite do Apache
+RUN a2enmod rewrite
+
+# Instala Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Define diretório padrão do Apache
+WORKDIR /var/www/html
+
+# Expondo porta 80
+EXPOSE 80
+
+# Inicia o Apache em primeiro plano
+CMD ["apache2ctl", "-D", "FOREGROUND"]
