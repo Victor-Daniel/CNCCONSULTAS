@@ -8,6 +8,7 @@ services:
       - "80:80"
     networks:
       - CNCCONSULTAS
+    restart: "no"  
     volumes:
       # Sincroniza todo o projeto em tempo real
       - type: bind

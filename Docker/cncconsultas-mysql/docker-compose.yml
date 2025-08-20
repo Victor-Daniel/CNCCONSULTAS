@@ -4,7 +4,7 @@ services:
   mysql:
     build: .
     container_name: cncconsultas_mysql
-    restart: always
+    restart: "no"
     ports:
       - "3306:3306"
     environment:

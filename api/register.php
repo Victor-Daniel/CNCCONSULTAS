@@ -29,7 +29,7 @@ try{
             $sanitizer = new DataSanitizer();
             
             $datas_sanitized = $sanitizer->Data_Register_Sanitizer($data);
-            echo json_encode($datas_sanitized);
+            echo json_encode(["Code"=>00,"msg"=>""]);
         }
         else{
             http_response_code(404);

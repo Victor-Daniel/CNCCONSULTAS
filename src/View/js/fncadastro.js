@@ -267,7 +267,7 @@ btn_cadastro.addEventListener("click",function(){
           estado: uf.value
         };
 
-        console.log(Dados);
+        sendData(Dados);
       }
       else{
          alert("Dados incorretos!");
