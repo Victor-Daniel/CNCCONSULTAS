@@ -5,6 +5,7 @@ use Api\Routes\Routes;
 use Api\Utilities\RouterProcessor;
 use Api\Utilities\FileChecker;
 use Api\Utilities\DataSanitizer;
+use Api\Utilities\DataValidater;
 
 header('Content-Type: application/json');
 header("Allow: POST");
@@ -27,9 +28,11 @@ try{
         if($file->FileVerify($path,$route)==true){
 
             $sanitizer = new DataSanitizer();
-            
+            $validate = new DataValidater();
+
             $datas_sanitized = $sanitizer->Data_Register_Sanitizer($data);
-            echo json_encode(["Code"=>00,"msg"=>""]);
+            echo json_encode(["Code"=>00,"msg"=>""
+            ]);
         }
         else{
             http_response_code(404);
