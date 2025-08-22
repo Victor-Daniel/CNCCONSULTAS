@@ -1621,3 +1621,61 @@ function  val_IESP(ie){
 
         return resultado;
     }
+function val_IESE(ie){
+    ie = ie.replace(/\D/g, '');
+    let resultado = false;
+
+    if (ie.length === 9) {
+        const base = ie.slice(0, 8);
+        const digitoInformado = parseInt(ie[8]);
+
+        const pesos = [9, 8, 7, 6, 5, 4, 3, 2];
+        let soma = 0;
+
+        for (let i = 0; i < 8; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+        }
+
+        let resto = soma % 11;
+        let digitoCalculado = (resto < 2) ? 0 : 11 - resto;
+
+        if (digitoInformado === digitoCalculado) {
+            resultado = true;
+        }
+    }
+
+    return resultado;
+}
+
+function val_IETO(ie){
+    ie = ie.replace(/\D/g, '');
+    let resultado = false;
+
+    // Pode ter 9 ou 11 dígitos (se tiver 11, remove os dígitos da posição 3 e 4)
+    if (ie.length === 9 || ie.length === 11) {
+        let base;
+        if (ie.length === 11) {
+            base = ie.substring(0, 2) + ie.substring(4, 10);
+        } else {
+            base = ie.substring(0, 8);
+        }
+
+        const digitoInformado = parseInt(ie.slice(-1));
+
+        const pesos = [9, 8, 7, 6, 5, 4, 3, 2];
+        let soma = 0;
+
+        for (let i = 0; i < 8; i++) {
+            soma += parseInt(base[i]) * pesos[i];
+        }
+
+        let resto = soma % 11;
+        let digitoCalculado = (resto < 2) ? 0 : 11 - resto;
+
+        if (digitoInformado === digitoCalculado) {
+            resultado = true;
+        }
+    }
+
+    return resultado;
+}

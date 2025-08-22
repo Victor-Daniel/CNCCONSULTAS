@@ -31,7 +31,8 @@ try{
             $validate = new DataValidater();
 
             $datas_sanitized = $sanitizer->Data_Register_Sanitizer($data);
-            echo json_encode(["Code"=>00,"msg"=>""
+            echo json_encode(["Code"=>00,"msg"=>"",
+            "ValInsc"=>$validate->ValidaterForm($datas_sanitized)
             ]);
         }
         else{
